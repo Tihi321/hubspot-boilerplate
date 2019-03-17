@@ -1,0 +1,6 @@
+
+# Node modules
+/work/hubthemes/node_modules/
+
+# Public folder
+/work/hubthemes/custom/public/
