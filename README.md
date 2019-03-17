@@ -13,7 +13,7 @@ For questions talk to:
 * [tknox.de@gmail.com](tknox.de@gmail.com)
 
 ## Getting started
-Follow the instructions:
+Working directory is work/hubthemes
 
 ## Development Start
 
@@ -49,7 +49,7 @@ PAGE=name_of_the_page npm run deploy
 
 ## Local server
 
-Local hubl server can be run from bin folder. It can be used for localy testing hubl code.
+Local hubl server can be run from bin folder. It can be used for localy testing hubl code. It is set to serve work/hubthemes/theme directory
 
 ```bash
 sh local-hubl-server
