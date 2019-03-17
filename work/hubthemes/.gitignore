@@ -1,0 +1,15 @@
+# Project dev files
+/node_modules/
+
+# Mac OS custom attribute store and thumbnails
+*.DS_Store
+._*
+
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Error logs
+error_log.txt
+debug.log

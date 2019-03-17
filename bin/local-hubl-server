@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Minimal version to run
+MINIMAL_VERSION=8
+
+# Check if Java is present and the minimal version requirement
+_java=`type java | awk '{ print $ NF }'`
+CURRENT_VERSION=$("$_java" -version 2>&1 | awk -F '"' '/version/ {print $2}')
+
+major_version=$(echo $CURRENT_VERSION | awk -F'.' '{ print $1 }')
+current_version=$(echo $CURRENT_VERSION | awk -F'.' '{ print $2 }')
+if [ $major_version -gt 1 ]; then
+   current_version=$major_version
+fi
+
+if [ $current_version ]; then
+        if [ $current_version -lt $MINIMAL_VERSION ]; then
+                 echo "Error: Java version $current_version is too low to run. Needs at least Java >= ${MINIMAL_VERSION}."
+                 exit 1
+        fi
+    else
+         echo "Not able to find Java executable or version. Please check your Java installation."
+         exit 1
+fi
+
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+(cd $DIR/../ && java -Xmx1g -classpath "$DIR/../lib/*" com.hubspot.content.hubl.dev.LocalHubLDevService server $DIR/../conf/config.yaml)

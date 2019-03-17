@@ -1,0 +1,18 @@
+{
+  "apiKey": "HUBSPOT_API_KRY",
+  "portalId": "PORTAL_ID",
+  "pages": {
+    "homepage": {
+      "files": {
+        "css": {
+          "path": "/theme/custom/public/homepage/assets/application.css",
+          "id": "FILE_ID"
+        },
+        "js": {
+          "path": "/theme/custom/public/homepage/assets/application.js",
+          "id": "FILE_ID"
+        }
+      }
+    }
+  }
+}
