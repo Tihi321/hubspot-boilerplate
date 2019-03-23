@@ -1,6 +1,6 @@
 # Hubspot boilerplate
 
-This boilerplate is adapted from https://github.com/Absanater/hubspot-frontend-local, moved to webpack merged with local hubl server and expanded so you can use it for multiple pages.
+This boilerplate is adapted from https://github.com/Absanater/hubspot-frontend-local, moved to webpack merged with local hubl server and expanded, you can use it for multiple pages.
 
 This repository contains starting point to local Hubspot development along with local hubl server. At the moment it is not possible to run custom modules from local server, thou you can create these modules in hubl html page using hubspot modules and include them.
 
@@ -25,10 +25,10 @@ npm start
 
 ## Browser sync
 
-BrowserSync to sync assets and enable easy cross-device testing. If you omit variable PAGE it will default to homepage, though you can change that in the serve.js file. TARGET is address from hubspot online preview page. If you omit TARGET it will default to address of local hubspot server.
+BrowserSync to sync assets and enable easy cross-device testing. If you omit variable page it will default to workingPage variable from hubspot config. Target is address from hubspot online preview page, if you omit target it will default to address of local hubspot server.
 
 ```bash
-PAGE=name_of_the_page TARGET=address_of_hubspot_page npm serve
+nnode serve.js --page=name_of_the_page --target=address_of_hubspot_page
 ```
 
 ## Build
@@ -41,10 +41,10 @@ npm run build
 
 ## Deploy
 
-Deploy files to hubspot, page is name of the page from hubspot config under pages.
+Deploy files to hubspot, page is name of the page from hubspot config under pages, though defaults to workingPage from hubspot config.
 
 ```bash
-PAGE=name_of_the_page npm run deploy
+node deploy.js
 ```
 
 ## Local server
