@@ -1,0 +1,48 @@
+.icon--youtube-icon {
+  &::before {
+    content: $icon--youtube-icon;
+    color: $base-white-color;
+  }
+}
+
+.icon--linkedin-icon {
+  &::before {
+    content: $icon--linkedin-icon;
+    color: $base-white-color;
+  }
+}
+
+.icon--facebook-icon {
+  &::before {
+    content: $icon--facebook-icon;
+    color: $base-white-color;
+  }
+}
+
+.icon--instagram-icon {
+  &::before {
+    content: $icon--instagram-icon;
+    color: $base-white-color;
+  }
+}
+
+.icon--calendar-icon {
+  &::before {
+    content: $icon--calendar-icon;
+    color: $base-white-color;
+  }
+}
+
+.icon--phone-icon {
+  &::before {
+    content: $icon--phone-icon;
+    color: $base-white-color;
+  }
+}
+
+.icon--mail-icon {
+  &::before {
+    content: $icon--mail-icon;
+    color: $base-white-color;
+  }
+}
