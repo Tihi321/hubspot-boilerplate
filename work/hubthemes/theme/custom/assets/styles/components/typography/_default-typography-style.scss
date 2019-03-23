@@ -1,0 +1,48 @@
+$default-style: (
+  'text-color': $base-text-color,
+  'default-padding': 35px,
+);
+
+body {
+  @include text-size(default);
+  line-height: 1.7;
+  color: map-get($default-style, 'text-color');
+  font-family: $font-family-primary;
+  font-weight: normal;
+}
+
+p,
+ul,
+ol {
+  @extend %paragraph-reset;
+  padding-bottom: map-get($default-style, 'default-padding');
+
+  &.clear-spacing,
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+h1,
+h2,
+h3 {
+  @extend %heading-reset;
+  padding-bottom: 10px;
+  font-family: $font-family-primary;
+}
+
+h1 {
+  @include text-size(big);
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+h2 {
+  @include text-size(larger);
+  font-weight: 800;
+}
+
+h3 {
+  @include text-size(large);
+  font-weight: 800;
+}

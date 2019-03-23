@@ -1,0 +1,37 @@
+$base-black-color:       #000000;
+$base-white-color:       #FFFFFF;
+
+$base-log-cabin:       #1A1A18;
+$base-cod-color:       #1C1C1C;
+$base-scorpion-color:  #5E5E5E;
+$base-silver-color:    #C4C4C4;
+$base-cerulean-color:  #296EB4;
+
+$base-tarantula-bg: rgba($base-black-color, 0.7);
+$base-mite-bg: rgba($base-black-color, 0.44);
+
+$base-primary-color: $base-cerulean-color;
+$base-dark-color: $base-log-cabin;
+$base-text-color: $base-white-color;
+$base-bg-color: $base-log-cabin;
+
+
+// Buttons
+$button-color-map: (
+  default: (
+    bg: $base-white-color,
+    text: transparent,
+    border: $base-white-color,
+    bg-hover: $base-white-color,
+    text-hover: $base-primary-color,
+    bg-active: transparent,
+    text-active: $base-white-color,
+  )
+);
+
+$links-map: (
+  default: (
+    color: $base-primary-color,
+    hover: $base-dark-color
+  )
+);

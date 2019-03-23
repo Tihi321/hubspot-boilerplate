@@ -1,0 +1,30 @@
+//Base
+$font-family-primary: 'Montserrat', sans-serif;
+$base-icons-font-family: 'icon-font';
+
+// Container
+$base-content-padding: 15px;
+$base-content-full-width: 1200px;
+$base-content-width: $base-content-full-width + ($base-content-padding*2);
+
+//Typography
+$typography-map: (
+  mobile: (
+    bigger:         32px,
+    big:            27px,
+    larger:         18px,
+    large:          18px,
+    default:        18px,
+    medium:         14px,
+    small:          12px,
+  ),
+  tablet: (
+    bigger:         100px,
+    big:            64px,
+    larger:         40px,
+    large:          27px,
+    default:        18px,
+    medium:         18px,
+    small:          12px,
+  )
+);

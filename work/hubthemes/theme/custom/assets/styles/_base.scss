@@ -1,0 +1,22 @@
+@import 'normalize-scss';
+
+@include normalize();
+
+@import '~media-blender';
+
+// Utils
+@import 'utils/breakpoints';
+@import 'utils/colors';
+@import 'utils/shared-variables';
+@import 'utils/functions';
+@import 'utils/helpers';
+@import 'utils/keyframes';
+@import 'utils/mixins';
+@import 'utils/z-indexes';
+@import 'utils/placeholders';
+
+// Icons
+@import 'components/icons/icons';
+
+// Typography
+@import 'components/typography/default-typography-style';
