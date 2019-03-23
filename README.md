@@ -44,7 +44,7 @@ npm run build
 Deploy files to hubspot, page is name of the page from hubspot config under pages, though defaults to workingPage from hubspot config.
 
 ```bash
-node deploy.js
+node deploy.js --page=name_of_the_page
 ```
 
 ## Local server
