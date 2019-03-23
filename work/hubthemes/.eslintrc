@@ -31,7 +31,7 @@
       "jquery"
      ],
 		"react": {
-			"pragma": "wp"
+			"pragma": "React"
 		}
 	},
 	"rules": {

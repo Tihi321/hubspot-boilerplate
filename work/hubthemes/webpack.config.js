@@ -1,8 +1,5 @@
 /* global process __dirname */
 const DEV = process.env.NODE_ENV !== 'production';
-const {
-  PAGE,
-} = process.env;
 
 const nodePath = require('path');
 const webpack = require('webpack');
@@ -10,6 +7,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const hubspotConfig = require('./hubspot.config.json');
+const nodeArguments = require('minimist')(process.argv.slice(2));
 
 const appPath = `${nodePath.resolve(__dirname)}`;
 
@@ -22,9 +21,12 @@ const themePagesFullPath = `${themeFullPath}/assets/views`;
 const themePublicFullPath = `${themeFullPath}/public`;
 
 
-// homepage
+// working page
+const {
+  workingPage,
+} = hubspotConfig;
 
-const pageName = (PAGE) || 'homepage';
+const pageName = (nodeArguments.page) || workingPage;
 
 const pageEntry = `${themePagesFullPath}/${pageName}/index.js`;
 const pageOutput = `${themePublicFullPath}/${pageName}`;
@@ -71,7 +73,24 @@ const allModules = {
       exclude: /node_modules/,
       use: [
         MiniCssExtractPlugin.loader,
-        'css-loader', 'postcss-loader', 'sass-loader',
+        {
+          loader: 'css-loader',
+          options: {
+            sourceMap: true,
+          },
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            sourceMap: true,
+          },
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true,
+          },
+        },
       ],
     },
   ],
@@ -94,18 +113,7 @@ const allPlugins = [
 ];
 
 // General optimisations.
-const allOptimizations = {
-  runtimeChunk: false,
-  splitChunks: {
-    cacheGroups: {
-      commons: {
-        test: /[\\/]node_modules[\\/]/,
-        name: 'vendors',
-        chunks: 'all',
-      },
-    },
-  },
-};
+const allOptimizations = {};
 
 // Use only for production build
 if (!DEV) {
@@ -115,7 +123,7 @@ if (!DEV) {
     new UglifyJsPlugin({
       cache: true,
       parallel: true,
-      sourceMap: true,
+      sourceMap: false,
       uglifyOptions: {
         output: {
           comments: false,
@@ -143,10 +151,10 @@ const modules = {
 
   plugins: allPlugins,
 
-  devtool: DEV ? '' : 'source-map',
+  devtool: DEV ? 'inline-cheap-module-source-map' : false,
 };
 
-// Add webpack output.
+
 const pageModules = Object.assign({}, modules, {
   entry: {
     application: [pageEntry],
@@ -158,15 +166,10 @@ const pageModules = Object.assign({}, modules, {
   },
 });
 
-// Delete homepage public folder.
+// Delete working page public folder.
 pageModules.plugins.push(new CleanWebpackPlugin([pageOutput]));
 pageModules.plugins.push(new CopyWebpackPlugin([
 
-  // Find jQuery in node_modules and copy it to public folder
-  {
-    from: `${appPath}/node_modules/jquery/dist/jquery.min.js`,
-    to: `${pageOutput}/assets/vendors`,
-  },
 ]));
 
 

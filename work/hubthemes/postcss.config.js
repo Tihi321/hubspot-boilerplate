@@ -1,5 +1,10 @@
-/* global process __dirname */
 const DEV = process.env.NODE_ENV !== 'production';
+
+const cdnPath = 'HUBSPOT_PUBLIC_PATH_TO_FONTS_FOLDER';
+const localPath = '/theme/custom/assets/fonts';
+
+// on production change local path to hubspot public.
+const fontsPath = (DEV) ? localPath : cdnPath;
 
 const autoPrefixer = require('autoprefixer');
 const cssMqpacker = require('css-mqpacker');
@@ -9,9 +14,23 @@ const cssNano = require('cssnano');
 const plugins = [
   autoPrefixer,
   postcssFontMagician({
-    google: {
-      variants: {
-        'IBM Plex Sans': {},
+    custom: {
+      'icon-font': {
+        variants: {
+          normal: {
+            400: {
+              url: {
+                woff: `${fontsPath}/icon-font.woff`,
+              },
+            },
+          },
+        },
+      },
+    },
+    variants: {
+      'Montserrat': {
+        400: ['woff2', 'woff'],
+        800: ['woff2', 'woff'],
       },
     },
     foundries: ['custom', 'google'],
