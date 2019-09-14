@@ -13,3 +13,15 @@ ehthumbs_vista.db
 # Error logs
 error_log.txt
 debug.log
+
+# Public folder
+theme/custom/public/
+
+# Hubspot folders
+theme/hubspot/
+theme/hubspot_default/
+theme/img/
+theme/custom-modules/
+
+# Hubspot config
+hubspot.config.json

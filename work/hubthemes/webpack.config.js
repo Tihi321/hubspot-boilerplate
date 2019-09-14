@@ -22,6 +22,7 @@ const themePublicFullPath = `${themeFullPath}/public`;
 
 
 // working page
+
 const {
   workingPage,
 } = hubspotConfig;
@@ -166,7 +167,7 @@ const pageModules = Object.assign({}, modules, {
   },
 });
 
-// Delete working page public folder.
+// Delete homepage public folder.
 pageModules.plugins.push(new CleanWebpackPlugin([pageOutput]));
 pageModules.plugins.push(new CopyWebpackPlugin([
 

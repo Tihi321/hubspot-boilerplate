@@ -42,7 +42,8 @@ if (nodeArguments.target) {
   if (js.useLocal) {
   
     jsRegex = new Promise((resolve) => {
-      getFile(js.id).then((body) => {
+      const jsId = (js.useDevelop) ? js.developId : js.id;
+      getFile(jsId).then((body) => {
     
         const { path } = JSON.parse(body);
     
@@ -72,7 +73,8 @@ if (nodeArguments.target) {
     };
     
     cssRegex = new Promise((resolve) => {
-      getFile(css.id).then((body) => {
+      const cssId = (css.useDevelop) ? css.developId : css.id;
+      getFile(cssId).then((body) => {
         const { path } = JSON.parse(body);
     
         const regVal = `<link.*${path.replace('.css', '')}.*.css.*>`;

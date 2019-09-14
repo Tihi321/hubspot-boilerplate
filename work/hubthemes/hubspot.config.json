@@ -7,13 +7,17 @@
       "files": {
         "css": {
           "useLocal": true,
+          "useDevelop": true,
           "path": "/theme/custom/public/homepage/assets/application.css",
-          "id": "FILE_ID"
+          "id": "FILE_ID",
+          "developId": "FILE_ID"
         },
         "js": {
           "useLocal": true,
+          "useDevelop": true,
           "path": "/theme/custom/public/homepage/assets/application.js",
-          "id": "FILE_ID"
+          "id": "FILE_ID",
+          "developId": "FILE_ID"
         }
       }
     }

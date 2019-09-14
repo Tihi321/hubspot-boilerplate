@@ -4,10 +4,9 @@ const cdnPath = 'HUBSPOT_PUBLIC_PATH_TO_FONTS_FOLDER';
 const localPath = '/theme/custom/assets/fonts';
 
 // on production change local path to hubspot public.
-const fontsPath = (DEV) ? localPath : cdnPath;
+const fontsPath = DEV ? localPath : cdnPath;
 
 const autoPrefixer = require('autoprefixer');
-const cssMqpacker = require('css-mqpacker');
 const postcssFontMagician = require('postcss-font-magician');
 const cssNano = require('cssnano');
 
@@ -28,14 +27,14 @@ const plugins = [
       },
     },
     variants: {
-      'Montserrat': {
+      Montserrat: {
         400: ['woff2', 'woff'],
         800: ['woff2', 'woff'],
       },
     },
+    display: 'swap',
     foundries: ['custom', 'google'],
   }),
-  cssMqpacker,
 ];
 
 // Use only for production build

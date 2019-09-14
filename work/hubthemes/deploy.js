@@ -1,5 +1,5 @@
-/* eslint-disable no-console */
 /* eslint-disable camelcase */
+
 const chalk = require('chalk');
 const rp = require('request-promise');
 const fs = require('fs');
@@ -22,10 +22,11 @@ if (!pages[pageName]) {
 
 Object.keys(pages[pageName].files).forEach((file) => {
   const thisFile = pages[pageName].files[file];
+  const thisId = (thisFile.useDevelop) ? thisFile.developId : thisFile.id;
 
   if (thisFile.useLocal) {
-    if (!thisFile.id) {
-      return console.error(chalk.red(`Please give your ${file} file an ID in hubspot.config.json`));
+    if (!thisId) {
+      return console.error(chalk.red(`Please give your ${file} file an ID in config.json`));
     }
   
     fs.readFile(nodePath.join(__dirname, thisFile.path), (err, data) => {
@@ -36,7 +37,7 @@ Object.keys(pages[pageName].files).forEach((file) => {
 
       if (file === 'js') {
 
-        // escape hubl variables & macros syntax from script as all {{ something }} or {% something %}, in script hubspot treats as hubl command.
+        // escape hubl variables & macros syntax from script.
         const regexMac = new RegExp(/({%(.*)%})/gi);
         const removeMacros = data.toString().replace(regexMac, '{% raw %}$&{% endraw %}');
         const regexVar = new RegExp(/({{(.*)}})/gi);
@@ -54,7 +55,7 @@ Object.keys(pages[pageName].files).forEach((file) => {
   
       const options = {
         method: 'PUT',
-        uri: `https://api.hubapi.com/content/api/v2/templates/${thisFile.id}?hapikey=${apiKey}`,
+        uri: `https://api.hubapi.com/content/api/v2/templates/${thisId}?hapikey=${apiKey}`,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -76,8 +77,8 @@ Object.keys(pages[pageName].files).forEach((file) => {
           Successfully updated`));
   
         })
-        .catch((err) => {
-          return console.error('Upload Failed:', err);
+        .catch((upErr) => {
+          return console.error('Upload Failed:', upErr);
         });
   
     });

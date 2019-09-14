@@ -21,6 +21,8 @@
 		}
 	},
 	"globals": {
+		"wp": true,
+		"wpApiSettings": true,
 		"window": true,
 		"document": true,
 		"$": true
@@ -31,7 +33,7 @@
       "jquery"
      ],
 		"react": {
-			"pragma": "React"
+			"pragma": "wp"
 		}
 	},
 	"rules": {
@@ -44,7 +46,8 @@
         }
 				],
 				"import/prefer-default-export": 0,
-				"object-curly-spacing": [2, "always"],
+        "object-curly-spacing": [2, "always"],
+        "no-shadow": 2,
 				"no-duplicate-imports": 2,
 				"no-mixed-operators": 1,
 				"no-unsafe-negation": 1,
@@ -86,6 +89,7 @@
 				"react/jsx-tag-spacing": 2,
 				"react/no-children-prop": 0,
 				"react/no-find-dom-node": 1,
-				"react/prop-types": 0
+        "react/prop-types": 0,
+        "prefer-destructuring": 0
 	}
 }
